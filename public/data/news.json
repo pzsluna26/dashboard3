@@ -1,0 +1,332 @@
+{
+  "privacy": {
+    "news": {
+      "monthly_timeline": {
+        "2025-01": {
+          "중분류목록": {
+            "개인정보보호": {
+              "count": 15,
+              "소분류목록": {
+                "개인정보 유출 사건": {
+                  "관련법": "개인정보보호법 제24조",
+                  "count": 450,
+                  "articles": [
+                    {
+                      "title": "대형 IT기업 개인정보 유출 사건 발생",
+                      "content": "개인정보보호법 위반으로 인한 대규모 유출 사건이 발생했습니다.",
+                      "url": "https://news.example.com/privacy-breach-1"
+                    },
+                    {
+                      "title": "개인정보 보호 강화 방안 논의",
+                      "content": "정부가 개인정보보호법 개정을 통한 보호 강화 방안을 검토하고 있습니다.",
+                      "url": "https://news.example.com/privacy-protection-1"
+                    }
+                  ]
+                },
+                "위치정보 수집 논란": {
+                  "관련법": "위치정보보호법 제15조",
+                  "count": 280,
+                  "articles": [
+                    {
+                      "title": "모바일 앱 위치정보 무단 수집 논란",
+                      "content": "주요 모바일 앱들이 사용자 동의 없이 위치정보를 수집하고 있다는 지적이 제기되었습니다.",
+                      "url": "https://news.example.com/location-privacy-1"
+                    }
+                  ]
+                },
+                "쿠키 동의 의무화": {
+                  "관련법": "개인정보보호법 제22조",
+                  "count": 350,
+                  "articles": [
+                    {
+                      "title": "웹사이트 쿠키 동의 의무화 시행",
+                      "content": "개인정보보호법 개정으로 웹사이트 쿠키 사용에 대한 명시적 동의가 의무화되었습니다.",
+                      "url": "https://news.example.com/cookie-consent-1"
+                    }
+                  ]
+                }
+              }
+            },
+            "데이터 보안": {
+              "count": 8,
+              "소분류목록": {
+                "클라우드 데이터 보안": {
+                  "관련법": "정보통신망법 제28조",
+                  "count": 180,
+                  "articles": [
+                    {
+                      "title": "클라우드 서비스 보안 강화 방안",
+                      "content": "정보통신망법에 따른 클라우드 데이터 보안 강화 방안이 논의되고 있습니다.",
+                      "url": "https://news.example.com/cloud-security-1"
+                    }
+                  ]
+                },
+                "금융정보 보호": {
+                  "관련법": "신용정보법 제15조",
+                  "count": 220,
+                  "articles": [
+                    {
+                      "title": "금융정보 보호 체계 강화",
+                      "content": "신용정보법 개정을 통한 금융정보 보호 체계 강화 방안이 발표되었습니다.",
+                      "url": "https://news.example.com/financial-info-1"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "labor": {
+    "news": {
+      "monthly_timeline": {
+        "2025-01": {
+          "중분류목록": {
+            "산업재해": {
+              "count": 25,
+              "소분류목록": {
+                "태안화력 노동자 사망": {
+                  "관련법": "중대재해처벌법 제5조",
+                  "count": 850,
+                  "articles": [
+                    {
+                      "title": "태안화력발전소 노동자 사망사고 발생",
+                      "content": "중대재해처벌법 적용 대상인 태안화력발전소에서 노동자 사망사고가 발생했습니다.",
+                      "url": "https://news.example.com/taean-accident-1"
+                    },
+                    {
+                      "title": "중대재해처벌법 강화 논의 시작",
+                      "content": "연이은 산업재해로 인해 중대재해처벌법 강화 논의가 본격화되고 있습니다.",
+                      "url": "https://news.example.com/serious-accident-law-1"
+                    }
+                  ]
+                },
+                "건설현장 안전사고": {
+                  "관련법": "산업안전보건법 제38조",
+                  "count": 720,
+                  "articles": [
+                    {
+                      "title": "건설현장 안전사고 급증",
+                      "content": "산업안전보건법 강화에도 불구하고 건설현장 안전사고가 급증하고 있습니다.",
+                      "url": "https://news.example.com/construction-safety-1"
+                    }
+                  ]
+                },
+                "화학공장 폭발사고": {
+                  "관련법": "중대재해처벌법 제6조",
+                  "count": 480,
+                  "articles": [
+                    {
+                      "title": "화학공장 폭발사고로 인한 피해 확산",
+                      "content": "중대재해처벌법 적용 대상인 화학공장에서 폭발사고가 발생했습니다.",
+                      "url": "https://news.example.com/chemical-explosion-1"
+                    }
+                  ]
+                }
+              }
+            },
+            "근로조건": {
+              "count": 18,
+              "소분류목록": {
+                "주 52시간 근무제": {
+                  "관련법": "근로기준법 제50조",
+                  "count": 920,
+                  "articles": [
+                    {
+                      "title": "주 52시간 근무제 시행 1년 평가",
+                      "content": "근로기준법 개정으로 시행된 주 52시간 근무제의 효과와 문제점이 논의되고 있습니다.",
+                      "url": "https://news.example.com/52hour-work-1"
+                    }
+                  ]
+                },
+                "최저임금 인상": {
+                  "관련법": "최저임금법 제8조",
+                  "count": 1150,
+                  "articles": [
+                    {
+                      "title": "2025년 최저임금 인상률 결정",
+                      "content": "최저임금법에 따른 2025년 최저임금 인상률이 결정되었습니다.",
+                      "url": "https://news.example.com/minimum-wage-1"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "environment": {
+    "news": {
+      "monthly_timeline": {
+        "2025-01": {
+          "중분류목록": {
+            "기후변화": {
+              "count": 20,
+              "소분류목록": {
+                "탄소중립 정책": {
+                  "관련법": "탄소중립법 제8조",
+                  "count": 680,
+                  "articles": [
+                    {
+                      "title": "2030 탄소중립 목표 달성 방안",
+                      "content": "탄소중립법에 따른 2030년 탄소중립 목표 달성을 위한 구체적 방안이 발표되었습니다.",
+                      "url": "https://news.example.com/carbon-neutral-1"
+                    }
+                  ]
+                },
+                "재생에너지 확대": {
+                  "관련법": "신재생에너지법 제12조",
+                  "count": 580,
+                  "articles": [
+                    {
+                      "title": "재생에너지 확대 정책 발표",
+                      "content": "신재생에너지법 개정을 통한 재생에너지 확대 정책이 발표되었습니다.",
+                      "url": "https://news.example.com/renewable-energy-1"
+                    }
+                  ]
+                }
+              }
+            },
+            "환경오염": {
+              "count": 15,
+              "소분류목록": {
+                "미세먼지 대책": {
+                  "관련법": "미세먼지법 제7조",
+                  "count": 750,
+                  "articles": [
+                    {
+                      "title": "미세먼지 저감 대책 강화",
+                      "content": "미세먼지법에 따른 저감 대책이 강화되고 있습니다.",
+                      "url": "https://news.example.com/fine-dust-1"
+                    }
+                  ]
+                },
+                "플라스틱 규제": {
+                  "관련법": "자원순환법 제14조",
+                  "count": 420,
+                  "articles": [
+                    {
+                      "title": "일회용 플라스틱 규제 강화",
+                      "content": "자원순환법 개정으로 일회용 플라스틱 규제가 강화됩니다.",
+                      "url": "https://news.example.com/plastic-regulation-1"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "education": {
+    "news": {
+      "monthly_timeline": {
+        "2025-01": {
+          "중분류목록": {
+            "교육정책": {
+              "count": 12,
+              "소분류목록": {
+                "대학입시 개편": {
+                  "관련법": "고등교육법 제34조",
+                  "count": 680,
+                  "articles": [
+                    {
+                      "title": "2028 대학입시 개편안 발표",
+                      "content": "고등교육법 개정에 따른 2028년 대학입시 개편안이 발표되었습니다.",
+                      "url": "https://news.example.com/university-admission-1"
+                    }
+                  ]
+                },
+                "사교육비 경감": {
+                  "관련법": "사교육규제법 제6조",
+                  "count": 520,
+                  "articles": [
+                    {
+                      "title": "사교육비 경감 대책 발표",
+                      "content": "사교육규제법 강화를 통한 사교육비 경감 대책이 발표되었습니다.",
+                      "url": "https://news.example.com/private-education-1"
+                    }
+                  ]
+                }
+              }
+            },
+            "학교안전": {
+              "count": 8,
+              "소분류목록": {
+                "학교폭력 대응": {
+                  "관련법": "학교폭력예방법 제17조",
+                  "count": 420,
+                  "articles": [
+                    {
+                      "title": "학교폭력 대응 체계 강화",
+                      "content": "학교폭력예방법 개정으로 대응 체계가 강화됩니다.",
+                      "url": "https://news.example.com/school-violence-1"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "economy": {
+    "news": {
+      "monthly_timeline": {
+        "2025-01": {
+          "중분류목록": {
+            "금융정책": {
+              "count": 22,
+              "소분류목록": {
+                "가상자산 규제": {
+                  "관련법": "자본시장법 제5조",
+                  "count": 950,
+                  "articles": [
+                    {
+                      "title": "가상자산 규제 강화 방안 발표",
+                      "content": "자본시장법 개정을 통한 가상자산 규제 강화 방안이 발표되었습니다.",
+                      "url": "https://news.example.com/crypto-regulation-1"
+                    }
+                  ]
+                },
+                "부동산 대출 규제": {
+                  "관련법": "은행법 제37조",
+                  "count": 1180,
+                  "articles": [
+                    {
+                      "title": "부동산 대출 규제 강화",
+                      "content": "은행법 개정으로 부동산 대출 규제가 강화됩니다.",
+                      "url": "https://news.example.com/real-estate-loan-1"
+                    }
+                  ]
+                }
+              }
+            },
+            "소상공인 지원": {
+              "count": 16,
+              "소분류목록": {
+                "임대료 지원 정책": {
+                  "관련법": "소상공인법 제21조",
+                  "count": 780,
+                  "articles": [
+                    {
+                      "title": "소상공인 임대료 지원 확대",
+                      "content": "소상공인법 개정으로 임대료 지원이 확대됩니다.",
+                      "url": "https://news.example.com/small-business-rent-1"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
