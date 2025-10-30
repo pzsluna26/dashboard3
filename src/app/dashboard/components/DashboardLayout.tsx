@@ -55,6 +55,13 @@ export default function DashboardLayout() {
       )}
       
       <main className="container mx-auto px-2 py-0 space-y-1 max-w-7xl">
+        {/* 데이터 로딩 테스트 */}
+        {process.env.NODE_ENV === 'development' && (
+          <div className="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-2 text-xs">
+            <p>데이터 로딩 테스트: {loading ? '로딩 중...' : data ? `성공 (법조항: ${data.legalArticles.length}, 댓글: ${data.comments.length})` : error ? `실패: ${error.message}` : '대기 중'}</p>
+          </div>
+        )}
+        
         {/* 1단: KPI 카드 섹션 */}
         <KPISection 
           filters={filters}

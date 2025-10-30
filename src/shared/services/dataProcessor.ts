@@ -396,11 +396,13 @@ export class DataProcessor {
           const relatedLaw = incidentData.관련법;
           if (relatedLaw && !legalArticlesMap.has(relatedLaw)) {
             const [lawName, article] = this.parseLegalArticle(relatedLaw);
+            // 카테고리 매핑 개선
+            const category = this.mapDomainToCategory(categoryPath[0]) || categoryPath[1] || '기타';
             legalArticlesMap.set(relatedLaw, {
               id: `legal_${articleId++}`,
               name: lawName,
               article: article,
-              category: categoryPath[0] || '기타',
+              category: category,
               fullName: relatedLaw
             });
           }
@@ -415,11 +417,13 @@ export class DataProcessor {
           const relatedLaw = incidentData.관련법;
           if (relatedLaw && !legalArticlesMap.has(relatedLaw)) {
             const [lawName, article] = this.parseLegalArticle(relatedLaw);
+            // 카테고리 매핑 개선
+            const category = this.mapDomainToCategory(categoryPath[0]) || categoryPath[1] || '기타';
             legalArticlesMap.set(relatedLaw, {
               id: `legal_${articleId++}`,
               name: lawName,
               article: article,
-              category: categoryPath[0] || '기타',
+              category: category,
               fullName: relatedLaw
             });
           }
@@ -427,7 +431,14 @@ export class DataProcessor {
       }
     });
     
-    return Array.from(legalArticlesMap.values());
+    const result = Array.from(legalArticlesMap.values());
+    console.log('Extracted legal articles:', {
+      total: result.length,
+      categories: [...new Set(result.map(la => la.category))],
+      sample: result.slice(0, 5)
+    });
+    
+    return result;
   }
   
   private static extractComments(socialData: any): SocialComment[] {
@@ -444,32 +455,38 @@ export class DataProcessor {
             // 개정강화 댓글
             if (incidentData.찬성.개정강화?.소셜목록) {
               incidentData.찬성.개정강화.소셜목록.forEach((social: any) => {
-                comments.push({
-                  id: `comment_${commentId++}`,
-                  content: social.content,
-                  source: this.mapChannelToSource(social.channel),
-                  stance: 'reform',
-                  incidentId: this.generateIncidentId(incidentName),
-                  legalArticleId: this.generateLegalArticleId(relatedLaw),
-                  createdAt: this.parseDate(social.date),
-                  likes: Math.floor(Math.random() * 100) // 임시 좋아요 수
-                });
+                const legalArticleId = this.generateLegalArticleId(relatedLaw);
+                if (legalArticleId) {
+                  comments.push({
+                    id: `comment_${commentId++}`,
+                    content: social.content,
+                    source: this.mapChannelToSource(social.channel),
+                    stance: 'reform',
+                    incidentId: this.generateIncidentId(incidentName),
+                    legalArticleId: legalArticleId,
+                    createdAt: this.parseDate(social.date),
+                    likes: Math.floor(Math.random() * 100) // 임시 좋아요 수
+                  });
+                }
               });
             }
             
             // 폐지약화 댓글
             if (incidentData.찬성.폐지약화?.소셜목록) {
               incidentData.찬성.폐지약화.소셜목록.forEach((social: any) => {
-                comments.push({
-                  id: `comment_${commentId++}`,
-                  content: social.content,
-                  source: this.mapChannelToSource(social.channel),
-                  stance: 'abolish',
-                  incidentId: this.generateIncidentId(incidentName),
-                  legalArticleId: this.generateLegalArticleId(relatedLaw),
-                  createdAt: this.parseDate(social.date),
-                  likes: Math.floor(Math.random() * 50)
-                });
+                const legalArticleId = this.generateLegalArticleId(relatedLaw);
+                if (legalArticleId) {
+                  comments.push({
+                    id: `comment_${commentId++}`,
+                    content: social.content,
+                    source: this.mapChannelToSource(social.channel),
+                    stance: 'abolish',
+                    incidentId: this.generateIncidentId(incidentName),
+                    legalArticleId: legalArticleId,
+                    createdAt: this.parseDate(social.date),
+                    likes: Math.floor(Math.random() * 50)
+                  });
+                }
               });
             }
           }
@@ -477,20 +494,34 @@ export class DataProcessor {
           // 반대 댓글 처리
           if (incidentData.반대?.소셜목록) {
             incidentData.반대.소셜목록.forEach((social: any) => {
-              comments.push({
-                id: `comment_${commentId++}`,
-                content: social.content,
-                source: this.mapChannelToSource(social.channel),
-                stance: 'oppose',
-                incidentId: this.generateIncidentId(incidentName),
-                legalArticleId: this.generateLegalArticleId(relatedLaw),
-                createdAt: this.parseDate(social.date),
-                likes: Math.floor(Math.random() * 30)
-              });
+              const legalArticleId = this.generateLegalArticleId(relatedLaw);
+              if (legalArticleId) {
+                comments.push({
+                  id: `comment_${commentId++}`,
+                  content: social.content,
+                  source: this.mapChannelToSource(social.channel),
+                  stance: 'oppose',
+                  incidentId: this.generateIncidentId(incidentName),
+                  legalArticleId: legalArticleId,
+                  createdAt: this.parseDate(social.date),
+                  likes: Math.floor(Math.random() * 30)
+                });
+              }
             });
           }
         });
       }
+    });
+    
+    console.log('Extracted comments:', {
+      total: comments.length,
+      stanceDistribution: {
+        reform: comments.filter(c => c.stance === 'reform').length,
+        abolish: comments.filter(c => c.stance === 'abolish').length,
+        oppose: comments.filter(c => c.stance === 'oppose').length
+      },
+      uniqueLegalArticleIds: [...new Set(comments.map(c => c.legalArticleId))],
+      sample: comments.slice(0, 3)
     });
     
     return comments;
@@ -667,6 +698,7 @@ export class DataProcessor {
   
   private static generateLegalArticleId(relatedLaw: string): string {
     // 법조항을 기반으로 일관된 ID 생성
+    if (!relatedLaw) return '';
     return `legal_${relatedLaw.replace(/\s+/g, '_').toLowerCase()}`;
   }
   
@@ -716,5 +748,22 @@ export class DataProcessor {
       default:
         return new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
     }
+  }
+  
+  private static mapDomainToCategory(domain: string): string {
+    const domainCategoryMap: Record<string, string> = {
+      'privacy': '개인정보보호',
+      'safety': '안전',
+      'finance': '금융',
+      'child': '아동보호',
+      'labor': '노동',
+      'environment': '환경',
+      'healthcare': '의료',
+      'education': '교육',
+      'transportation': '교통',
+      'housing': '주거'
+    };
+    
+    return domainCategoryMap[domain] || domain;
   }
 }
