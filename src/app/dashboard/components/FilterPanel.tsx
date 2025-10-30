@@ -5,16 +5,16 @@ import { DashboardFilters } from '@/shared/types/dashboard';
 import { FilterPanelProps } from '@/shared/types/components';
 import { defaultFilters } from '@/shared/store/dashboardAtoms';
 
-export default function FilterPanel({ 
-  filters, 
-  onFiltersChange 
+export default function FilterPanel({
+  filters,
+  onFiltersChange
 }: FilterPanelProps) {
-  
+
   const updateFilters = useCallback((update: Partial<DashboardFilters>) => {
     const newFilters = { ...filters, ...update };
     onFiltersChange(newFilters);
   }, [filters, onFiltersChange]);
-  
+
   const resetFilters = useCallback(() => {
     onFiltersChange(defaultFilters);
   }, [onFiltersChange]);
@@ -79,11 +79,10 @@ export default function FilterPanel({
                     }}
                     className="sr-only"
                   />
-                  <span className={`px-1 py-0.5 rounded text-xs cursor-pointer transition-colors ${
-                    filters.category.includes(option.value)
+                  <span className={`px-1 py-0.5 rounded text-xs cursor-pointer transition-colors ${filters.category.includes(option.value)
                       ? 'bg-blue-500 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}>
+                    }`}>
                     {option.label}
                   </span>
                 </label>
@@ -108,11 +107,10 @@ export default function FilterPanel({
                     }}
                     className="sr-only"
                   />
-                  <span className={`px-1 py-0.5 rounded text-xs cursor-pointer transition-colors ${
-                    filters.source.includes(option.value)
+                  <span className={`px-1 py-0.5 rounded text-xs cursor-pointer transition-colors ${filters.source.includes(option.value)
                       ? 'bg-green-500 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}>
+                    }`}>
                     {option.label}
                   </span>
                 </label>

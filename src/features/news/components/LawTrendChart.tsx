@@ -121,7 +121,13 @@ export default function LawTrendChart({ data, period }: LawTrendChartProps) {
     };
   }, [data, allDates]);
 
-  const colors = ["#38bdf8", "#60a5fa"]; // 파랑 톤 유지
+  const colors = [
+    "#8B9DC3", // 부드러운 라벤더 블루
+    "#A8C8EC", // 부드러운 스카이 블루
+    "#B8A9C9", // 부드러운 라벤더
+    "#C9A96E", // 부드러운 골드
+    "#A8B8A8"  // 부드러운 세이지 그린
+  ]; // 부드럽고 조화로운 색상 팔레트
 
   const MaxLabels = ({ series }: any) => {
     const maxNodes = series
@@ -161,11 +167,10 @@ export default function LawTrendChart({ data, period }: LawTrendChartProps) {
               ry={6}
               width={175}
               height={30}
-              fill="rgba(14,165,233,0.12)"
+              fill="color-mix(in oklab, var(--color-sky-100) 80%, transparent)"
               stroke={p.color}
             />
-            {/* 텍스트를 중립 700으로 */}
-            <text x={-67} y={-26} fontSize={15} fill="#374151">
+            <text x={-67} y={-26} fontSize={15} fill="color-mix(in oklab, var(--color-neutral-700) 100%, transparent)">
               {`${p.id}: ${p.value}`}
             </text>
           </g>
@@ -197,9 +202,9 @@ export default function LawTrendChart({ data, period }: LawTrendChartProps) {
   const Card = () => {
     if (!selectedPeak) {
       return (
-        <div className="w-1/3 bg-transparent rounded-2xl p-6 text-neutral-700">
-          <h3 className="text-2xl font-semibold mb-4">이슈에 대한 여론반응</h3>
-          <p className="text-neutral-700/70">
+        <div className="w-1/3 bg-white/30 backdrop-blur-xl rounded-2xl p-6 border border-white/40 shadow-[0_20px_60px_rgba(31,38,135,0.2)] text-[color-mix(in_oklab,var(--color-neutral-700)_100%,transparent)]">
+          <h3 className="text-2xl font-bold font-[var(--font-blackhan)] text-[color-mix(in_oklab,var(--color-neutral-800)_100%,transparent)] drop-shadow-sm mb-4">이슈에 대한 여론반응</h3>
+          <p className="text-[color-mix(in_oklab,var(--color-neutral-600)_100%,transparent)]">
             최대값 마커를 클릭하면 상세 정보가 여기에 표시됩니다.
           </p>
         </div>
@@ -218,63 +223,71 @@ export default function LawTrendChart({ data, period }: LawTrendChartProps) {
     const title = isSocial ? "소셜이 주목한 이슈" : "언론이 주목한 이슈";
 
     return (
-      <div className="w-1/3 bg-transparent rounded-2xl p-6 text-neutral-700">
+      <div className="w-1/3 bg-white/30 backdrop-blur-xl rounded-2xl p-6 border border-white/40 shadow-[0_20px_60px_rgba(31,38,135,0.2)] text-[color-mix(in_oklab,var(--color-neutral-700)_100%,transparent)]">
         <div className="flex items-center mb-4 gap-2">
-          <h3 className="text-2xl font-semibold">
+          <h3 className="text-2xl font-bold font-[var(--font-blackhan)] text-[color-mix(in_oklab,var(--color-neutral-800)_100%,transparent)] drop-shadow-sm">
             {title} ({period}별)
           </h3>
          
         </div>
 
-        <h4 className="text-xl font-semibold ">
+        <h4 className="text-xl font-bold text-[color-mix(in_oklab,var(--color-blue-700)_100%,transparent)] font-[var(--font-jua)]">
           {LAW_LABEL[law as keyof typeof LAW_LABEL] ?? law}{" "}
           (<abbr title={rawDate}>{displayDate}</abbr>)
         </h4>
 
         <p className="mb-1">
-          <span className="font-semibold text-lg">이 날의 핫이슈 사건:</span>{" "}
+          <span className="font-bold text-lg text-[color-mix(in_oklab,var(--color-neutral-800)_100%,transparent)]">이 날의 핫이슈 사건:</span>{" "}
           {detail?.sub?.title ?? "정보 없음"}
           {typeof detail?.count === "number" && (
-            <span className="text-neutral-700/70"> (관련 기사 {detail.count}건)</span>
+            <span className="text-[color-mix(in_oklab,var(--color-neutral-600)_100%,transparent)]"> (관련 기사 {detail.count}건)</span>
           )}
         </p>
         {detail?.mid && (
-          <p className="text-lg text-neutral-700/70 mb-4">테마: {detail.mid}</p>
+          <p className="text-lg text-[color-mix(in_oklab,var(--color-neutral-600)_100%,transparent)] mb-4">테마: {detail.mid}</p>
         )}
         {detail?.article && (
           <div className="mt-10 flex flex-col">
-            <p className="font-semibold mb-1 text-lg">관련 대표 기사</p>
+            <p className="font-bold mb-1 text-lg text-[color-mix(in_oklab,var(--color-neutral-800)_100%,transparent)]">관련 대표 기사</p>
             <a
               href={detail.article.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sky-600 hover:underline"
+              className="text-[color-mix(in_oklab,var(--color-sky-600)_100%,transparent)] hover:text-[color-mix(in_oklab,var(--color-sky-700)_100%,transparent)] hover:underline transition-colors duration-200"
             >
               {detail.article.title}
             </a>
           </div>
         )}
 
-        {/* 찬반 가로 누적 막대 (라이트 배경에 맞게 톤 조정) */}
+        {/* 찬반 가로 누적 막대 - CSS 팔레트 색상 사용 */}
         <div className="mt-10 mb-2">
-          <h1 className="text-xl font-semibold">'{displayDate}' 여론 찬/반 비율</h1>
-          <div className="w-full h-6 bg-neutral-300 rounded overflow-hidden flex mt-2">
+          <h1 className="text-xl font-bold text-[color-mix(in_oklab,var(--color-neutral-800)_100%,transparent)]">'{displayDate}' 여론 찬/반 비율</h1>
+          <div className="w-full h-6 bg-[color-mix(in_oklab,var(--color-neutral-200)_100%,transparent)] rounded-lg overflow-hidden flex mt-2 border border-white/30">
             <div
-              className="h-6"
-              style={{ width: `${pol.agreePct}%`, backgroundColor: "rgba(40,125,253,0.46)" }}
+              className="h-6 transition-all duration-300"
+              style={{ 
+                width: `${pol.agreePct}%`, 
+                backgroundColor: "#8B9DC3" // 부드러운 라벤더 블루
+              }}
               title={`찬성 ${pol.agreePct}%`}
             />
             <div
-              className="h-6"
+              className="h-6 transition-all duration-300"
               style={{
                 width: `${pol.disagreePct}%`,
-                backgroundColor: "rgba(120, 120, 120, 0.35)",
+                backgroundColor: "#B8A9C9", // 부드러운 라벤더
               }}
+              title={`반대 ${pol.disagreePct}%`}
             />
           </div>
-          <div className="flex justify-between text-sm mt-1 text-neutral-700">
-            <span>찬성 {pol.agreePct}% ({pol.agree})</span>
-            <span>반대 {pol.disagreePct}% ({pol.disagree})</span>
+          <div className="flex justify-between text-sm mt-2 text-[color-mix(in_oklab,var(--color-neutral-700)_100%,transparent)] font-medium">
+            <span className="px-2 py-1 bg-[color-mix(in_oklab,var(--color-blue-50)_80%,transparent)] rounded-md border border-[color-mix(in_oklab,var(--color-blue-200)_50%,transparent)]">
+              찬성 {pol.agreePct}% ({pol.agree})
+            </span>
+            <span className="px-2 py-1 bg-[color-mix(in_oklab,var(--color-gray-50)_80%,transparent)] rounded-md border border-[color-mix(in_oklab,var(--color-gray-200)_50%,transparent)]">
+              반대 {pol.disagreePct}% ({pol.disagree})
+            </span>
           </div>
         </div>
       </div>
@@ -283,10 +296,10 @@ export default function LawTrendChart({ data, period }: LawTrendChartProps) {
 
   return (
     <div className="flex w-full gap-6">
-      {/* 차트 컨테이너: 투명 + 텍스트 중립 700 */}
-      <div className="w-2/3 h-full bg-transparent rounded-2xl p-4 text-neutral-700">
+      {/* 차트 컨테이너: 글래스모피즘 스타일 */}
+      <div className="w-2/3 h-full bg-white/30 backdrop-blur-xl rounded-2xl p-6 border border-white/40 shadow-[0_20px_60px_rgba(31,38,135,0.2)] text-[color-mix(in_oklab,var(--color-neutral-700)_100%,transparent)]">
         <div className="flex items-center mb-4 gap-2">
-          <h3 className="text-2xl font-semibold">법안별 언급량 추이 ({period}별)</h3>
+          <h3 className="text-2xl font-bold font-[var(--font-blackhan)] text-[color-mix(in_oklab,var(--color-neutral-800)_100%,transparent)] drop-shadow-sm">법안별 언급량 추이 ({period}별)</h3>
            <Image
             src="/icons/info.png"
             alt="도움말"
@@ -326,18 +339,24 @@ export default function LawTrendChart({ data, period }: LawTrendChartProps) {
             areaOpacity={0.35}
             useMesh={true}
             theme={{
-              text: { fill: "#374151" }, // neutral-700
+              text: { fill: "color-mix(in oklab, var(--color-neutral-700) 100%, transparent)" },
               axis: {
-                domain: { line: { stroke: "#9ca3af" } }, // neutral-400
+                domain: { line: { stroke: "color-mix(in oklab, var(--color-neutral-400) 100%, transparent)" } },
                 ticks: {
-                  line: { stroke: "#cbd5e1" }, // slate-300
-                  text: { fill: "#374151" },    // neutral-700
+                  line: { stroke: "color-mix(in oklab, var(--color-gray-300) 100%, transparent)" },
+                  text: { fill: "color-mix(in oklab, var(--color-neutral-700) 100%, transparent)" },
                 },
               },
-              grid: { line: { stroke: "#e5e7eb" } }, // neutral-200
-              crosshair: { line: { stroke: "#38bdf8", strokeWidth: 1 } },
+              grid: { line: { stroke: "color-mix(in oklab, var(--color-gray-200) 100%, transparent)" } },
+              crosshair: { line: { stroke: "color-mix(in oklab, var(--color-sky-500) 100%, transparent)", strokeWidth: 2 } },
               tooltip: {
-                container: { background: "rgba(255,255,255,0.9)", color: "#111827" },
+                container: { 
+                  background: "color-mix(in oklab, var(--color-white) 95%, transparent)", 
+                  color: "color-mix(in oklab, var(--color-neutral-800) 100%, transparent)",
+                  border: "1px solid color-mix(in oklab, var(--color-white) 50%, transparent)",
+                  borderRadius: "8px",
+                  backdropFilter: "blur(8px)"
+                },
               },
             }}
             legends={[
@@ -348,7 +367,7 @@ export default function LawTrendChart({ data, period }: LawTrendChartProps) {
                 itemWidth: 120,
                 itemHeight: 20,
                 symbolSize: 12,
-                itemTextColor: "#374151", // neutral-700
+                itemTextColor: "color-mix(in oklab, var(--color-neutral-700) 100%, transparent)",
               },
             ]}
             layers={[

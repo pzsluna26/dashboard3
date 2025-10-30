@@ -54,7 +54,7 @@ export default function LawRankingCard({
       `}
     >
       <div className="flex items-center mb-4 gap-2">
-        <h3 className="text-2xl font-semibold leading-none align-middle p-1">법안 랭킹 ({periodLabel}별)</h3>
+        <h3 className="text-2xl font-bold leading-none align-middle p-1 text-[color-mix(in_oklab,var(--color-neutral-800)_100%,transparent)] font-[var(--font-blackhan)] drop-shadow-sm">법안 랭킹 ({periodLabel}별)</h3>
         <Image
           src="/icons/info.png"
           alt="도움말"
@@ -72,10 +72,10 @@ export default function LawRankingCard({
         />
       </div>
         <div className="h-[275px] flex flex-col
-        bg-white/20 backdrop-blur-md rounded-2xl  p-1
-        border border-white/30 mt-8
-        shadow-[0_12px_40px_rgba(20,30,60,0.12)]
-        text-neutral-700">
+        bg-white/30 backdrop-blur-xl rounded-2xl p-4
+        border border-white/40 mt-6
+        shadow-[0_20px_60px_rgba(31,38,135,0.2)]
+        text-[color-mix(in_oklab,var(--color-neutral-700)_100%,transparent)]">
       <ol className="mt-5 flex-1 min-h-0 overflow-hidden list-none m-0 p-0">
         <div style={{ height: ITEM_HEIGHT * Math.max(1, top.length) }}>
           {top.map((item, idx) => {
@@ -99,12 +99,12 @@ export default function LawRankingCard({
                 >
                   {/* 순위 + 이름 */}
                   <div className="flex items-center gap-3 min-w-0">
-                    <span className="w-7 h-7 shrink-0 grid place-items-center rounded-md bg-white/60 text-neutral-800 text-lg font-semibold">
+                    <span className="w-8 h-8 shrink-0 grid place-items-center rounded-lg bg-white/50 backdrop-blur-sm border border-white/30 text-[color-mix(in_oklab,var(--color-neutral-800)_100%,transparent)] text-lg font-bold shadow-sm">
                       {item.rank}
                     </span>
                     <Link
                       href={`/news/category/${encodeURIComponent(item.name)}`}
-                      className="truncate hover:underline text-lg"
+                      className="truncate hover:underline text-lg font-medium text-[color-mix(in_oklab,var(--color-neutral-700)_100%,transparent)] hover:text-[color-mix(in_oklab,var(--color-blue-600)_100%,transparent)] transition-colors duration-200"
                       title={LAW_LABEL[item.name]}
                     >
                       {LAW_LABEL[item.name]}
@@ -113,16 +113,16 @@ export default function LawRankingCard({
 
                   {/* 기사량 + 증감률 */}
                   <div className="flex items-center gap-3">
-                    <span className="text-xs text-neutral-600 hidden md:inline">
+                    <span className="text-xs text-[color-mix(in_oklab,var(--color-neutral-600)_100%,transparent)] hidden md:inline font-medium">
                       {item.value.toLocaleString()}건
                     </span>
                     <span
-                      className={`text-xs md:text-sm font-semibold ${
+                      className={`text-xs md:text-sm font-bold px-2 py-1 rounded-md backdrop-blur-sm border ${
                         isUp
-                          ? "text-emerald-600"
+                          ? "text-[color-mix(in_oklab,var(--color-emerald-600)_100%,transparent)] bg-[color-mix(in_oklab,var(--color-green-50)_80%,transparent)] border-[color-mix(in_oklab,var(--color-emerald-400)_30%,transparent)]"
                           : isDown
-                          ? "text-rose-600"
-                          : "text-neutral-600"
+                          ? "text-[color-mix(in_oklab,var(--color-rose-600)_100%,transparent)] bg-[color-mix(in_oklab,var(--color-red-50)_80%,transparent)] border-[color-mix(in_oklab,var(--color-red-400)_30%,transparent)]"
+                          : "text-[color-mix(in_oklab,var(--color-neutral-600)_100%,transparent)] bg-[color-mix(in_oklab,var(--color-gray-50)_80%,transparent)] border-[color-mix(in_oklab,var(--color-gray-300)_30%,transparent)]"
                       }`}
                       title="전기간 대비 증감률"
                     >

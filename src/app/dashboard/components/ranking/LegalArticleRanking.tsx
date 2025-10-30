@@ -250,7 +250,7 @@ export default function LegalArticleRanking({ filters, data }: LegalArticleRanki
 
   if (loading) {
     return (
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="bg-transparent rounded-lg p-6">
         <h3 className="text-lg font-semibold mb-4">입법수요 TOP 5</h3>
         <div className="flex justify-center items-center py-12">
           <LoadingSpinner />
@@ -261,7 +261,7 @@ export default function LegalArticleRanking({ filters, data }: LegalArticleRanki
 
   if (error) {
     return (
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="bg-transparent rounded-lg p-6">
         <h3 className="text-lg font-semibold mb-4">입법수요 TOP 5</h3>
         <div className="text-center py-8">
           <div className="text-red-500 mb-2">
@@ -283,7 +283,7 @@ export default function LegalArticleRanking({ filters, data }: LegalArticleRanki
 
   if (topLegalArticles.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-sm p-6">
+      <div className="bg-transparent rounded-lg p-6">
         <h3 className="text-lg font-semibold mb-4">입법수요 TOP 5</h3>
         <div className="text-center py-8">
           <div className="text-gray-400 mb-2">
@@ -304,15 +304,15 @@ export default function LegalArticleRanking({ filters, data }: LegalArticleRanki
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-2 h-full flex flex-col">
-      <div className="flex items-center justify-between mb-2 flex-shrink-0">
-        <h3 className="text-sm font-semibold text-gray-900">입법수요 TOP 5</h3>
-        <div className="text-xs text-gray-500">
+    <div className="bg-transparent border border-white/40 rounded-2xl p-4 h-full flex flex-col">
+      <div className="flex items-center justify-between mb-3 flex-shrink-0">
+        <h3 className="text-lg font-bold text-[color-mix(in_oklab,var(--color-neutral-800)_100%,transparent)] font-[var(--font-blackhan)] drop-shadow-sm">입법수요 TOP 5</h3>
+        <div className="text-xs text-[color-mix(in_oklab,var(--color-neutral-600)_100%,transparent)] font-medium">
           총 {topLegalArticles.reduce((sum, item) => sum + item.commentCount, 0).toLocaleString()}개 댓글
         </div>
       </div>
       
-      <div className="space-y-1 flex-1 overflow-y-auto">
+      <div className="space-y-2 flex-1 overflow-y-auto">
         {topLegalArticles.slice(0, 5).map((ranking, index) => (
           <LegalArticleRankingCard
             key={ranking.id}

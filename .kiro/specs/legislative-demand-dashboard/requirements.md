@@ -7,15 +7,15 @@
 ## 용어 정의
 
 - **Legislative_Dashboard**: 입법수요 분석 대시보드 시스템
-- **KPI_Card**: 핵심 지표를 표시하는 카드형 컴포넌트
-- **Legal_Article**: 법조항 (예: 개인정보보호법 제2조의2)
-- **Social_Comment**: 소셜 미디어 댓글 데이터
-- **News_Article**: 뉴스 기사 데이터
-- **Legislative_Stance**: 입법 입장 (개정강화/폐지완화/반대)
-- **Incident**: 뉴스에서 추출된 사건
-- **Trend_Chart**: 시간대별 트렌드를 보여주는 차트
-- **Heatmap**: 법 분야별 입법수요를 색상으로 표시하는 히트맵
-- **Network_Graph**: 사건-법 연결망을 보여주는 네트워크 그래프
+- 1**KPI_Card**: 핵심 지표를 표시하는 카드형 컴포넌트
+- 2**Legal_Article**: 법조항 (예: 개인정보보호법 제2조의2)
+- 3**Social_Comment**: 소셜 미디어 댓글 데이터
+- 4**News_Article**: 뉴스 기사 데이터
+- 5**Legislative_Stance**: 입법 입장 (개정강화/폐지완화/반대)
+- 6**Incident**: 뉴스에서 추출된 사건
+- 7**Trend_Chart**: 시간대별 트렌드를 보여주는 차트
+- 8**Heatmap**: 법 분야별 입법수요를 색상으로 표시하는 히트맵
+- 9**Network_Graph**: 사건-법 연결망을 보여주는 네트워크 그래프
 
 ## 요구사항
 
